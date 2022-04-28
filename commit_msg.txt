@@ -1,1 +1,1 @@
-test git alias command
+test git alias command with push command
