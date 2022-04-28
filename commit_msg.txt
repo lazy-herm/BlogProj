@@ -1,0 +1,7 @@
+added DeleteView and DraftListView
+
+- added delete post view class
+- added delete view url
+- added DraftListView view class
+- corrected typo on order_by methods in view classes
+- added DraftListView url path
