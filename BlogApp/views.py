@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 
 class AboutView(TemplateView):
     template_name = 'about.html'
-    ##test for commit file
+    ##test for git alias
 class PostListView(ListView):
     model = Post
 
