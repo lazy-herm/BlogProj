@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 
 
 class AboutView(TemplateView):
-    template_name = 'about.html'
+    template_name = 'blog/about.html'
     ##test for git alias
 class PostListView(ListView):
     model = Post
@@ -44,7 +44,7 @@ class DraftPostListView(ListView):
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
 
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('blog/post_list')
 
 class DraftListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
