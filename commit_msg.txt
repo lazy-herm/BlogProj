@@ -1,7 +1,1 @@
-Fixing runserver errors. Missing on_delete, imports and typos.
-
-- added on_delete argument to foreign key fields. all cascade vlaue.
-- added import include call
-- corrected model import typo
-- corrected forms typo
-- corrected urls typo
+removing commit msg txt
