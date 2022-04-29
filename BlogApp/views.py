@@ -1,7 +1,7 @@
 from os import lseek
 from django.shortcuts import redirect, render
 from django.views.generic import (TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
-from BlogApp.models import Post, Comment
+from BlogApp.models import Post, Comments
 from BlogApp.forms import PostForm, CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import timezone

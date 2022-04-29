@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
@@ -5,7 +6,7 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now())
@@ -25,7 +26,7 @@ class Post(models.Model):
         return self.title
 
 class Comments(models.Model):
-    post = models.ForeignKey('BlogApp.Post', related_name='comments')
+    post = models.ForeignKey('BlogApp.Post', related_name='comments', on_delete=models.CASCADE)
     author = models.CharField(max_length=200)
     text = models.TextField()
     create_date = models.DateField(default = timezone.now())
