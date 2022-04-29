@@ -4,7 +4,7 @@ from django.views.generic import (TemplateView, ListView, DetailView, CreateView
 from BlogApp.models import Post, Comments
 from BlogApp.forms import PostForm, CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from datetime import timezone
+from django.utils import timezone
 from django.urls import reverse_lazy
 # Create your views here.
 
