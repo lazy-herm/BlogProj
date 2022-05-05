@@ -1,4 +1,5 @@
 from os import lseek
+from urllib.request import Request
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import (TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
 from BlogApp.models import Post, Comments
@@ -58,3 +59,13 @@ class DraftListView(LoginRequiredMixin, ListView):
 @login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+        else:
+            form = CommentForm()
+        return render(request, 'blog/comment_form.html', {'form':form})
