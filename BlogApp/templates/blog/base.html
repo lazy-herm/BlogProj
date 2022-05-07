@@ -24,18 +24,37 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-default techfont custom-navbar">
         <div class="container">
-            <ul>
+            <ul class="nav navbar-nav">
                 <li><a href='{% url post-list %}' class="navbar-brand bigbrand">My Blog</a></li>
                 <li><a href="{% url about %}">About</a></li>
                 <li><a href="https://www.github.com">Github</a></li>
                 <li><a href="https://www.linkedin.com">LinkedIn</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url post_new %}">New Post</a></li>
+                    <li><a href="{% url post_draft_list %}">Drafts</a></li>
+                    <li><a href="{% url logout %}">Logout</a></li>
+                    <li>Welcome {{user.username}}</li>
+                {% else %}
+                    <li><a class="nav navbar-right" href="{% url login %}"><span class="glyphicon-user"></span></a></li>
+                {% endif %}
+
+            </ul>
         </div>
     </nav>
     <!-- CONTENT BLOCK -->
-    {% block body %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_posts">
+                    {% block content %}
     
-    {% endblock %}
-    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        
+    </div>    
 </body>
 </html>
