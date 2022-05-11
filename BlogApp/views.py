@@ -13,7 +13,7 @@ from django.urls import reverse_lazy
 
 
 class AboutView(TemplateView):
-    template_name = 'blog/about.html'
+    template_name = 'BlogApp/about.html'
 
 class PostListView(ListView):
     model = Post
