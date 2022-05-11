@@ -1,4 +1,5 @@
 from os import lseek
+from re import template
 from urllib.request import Request
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import (TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
@@ -16,7 +17,6 @@ class AboutView(TemplateView):
 
 class PostListView(ListView):
     model = Post
-
     def get_queryset(self):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
