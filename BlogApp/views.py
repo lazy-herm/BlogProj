@@ -25,14 +25,14 @@ class PostDetailView(DetailView):
 
 class CreatePostView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_detail.html'
+    redirect_field_name = 'BlogApp/post_detail.html'
 
     form_class = PostForm
     model = Post
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_detail.html'
+    redirect_field_name = 'BlogApp/post_detail.html'
 
     form_class = PostForm
     model = Post
@@ -50,11 +50,11 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 
 class DraftListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_list.html'
+    redirect_field_name = 'BlogApp/post_list.html'
     model = Post
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__isnull=True).order_by('created_date')
+        return Post.objects.filter(published_date__isnull=True).order_by('create_date')
 
 
 @login_required
@@ -74,9 +74,10 @@ def add_comment_to_post(request, pk):
             comment.post = post
             comment.save()
             return redirect('post_detail', pk=post.pk)
-        else:
-            form = CommentForm()
-        return render(request, 'blog/comment_form.html', {'form':form})
+    
+    else:
+        form = CommentForm()
+    return render(request, 'BlogApp/comment_form.html', {'form':form})
 
 @login_required
 def comment_approve(request,pk):
